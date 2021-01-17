@@ -62,3 +62,50 @@ function startApp() {
             }
         })
 }
+
+//Select Department 
+function chooseDepartment() {
+    var sqlStart = "SELECT * FROM department";
+    connection.query(sqlStart, function (err, result) {
+        if (err) throw err;
+        console.table(result)
+        //Run the search 
+        startApp();
+    })
+}
+//Select Employee
+function chooseEmployee() {
+    var sqlStart = "SELECT first_name, last_name, title, salary FROM employee ";
+    sqlStart += "LEFT JOIN role ";
+    sqlStart += "ON employee.role_id = role.id"
+    connection.query(sqlStart, function (err, result) {
+        if (err) throw err;
+        console.table(result)
+        //Run the search 
+        startApp();
+    })
+}
+//Select Role 
+function chooseRole() {
+    var sqlStart = "SELECT * FROM role";
+    connection.query(sqlStart, function (err, result) {
+        if (err) throw err;
+        console.table(result)
+        //Run the search 
+        startApp();
+    })
+}
+//Update Employee
+const updateEmployee = () => {
+    function runUpdate() {
+        inquirer
+            .prompt({
+                name: "action",
+                type: "list",
+                message: "Choose employee to update",
+                choices: employeeOptions
+            })     
+    }
+    //Run the update
+    runUpdate();  
+}
