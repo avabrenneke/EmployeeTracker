@@ -21,7 +21,7 @@ const employeeOptions = [
     "exit"
 ];
 //Table Options
-const tableOptions = [
+const updateEmployee = [
     "First Name",
     "Last Name",
     "Role",
