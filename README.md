@@ -15,5 +15,5 @@ This application includes
 
 # GIF of Application
 ![](assets/example.png)
-![](assets/Jan-16-2021 21-01-43.gif)
+![](assets/gif.gif)
  
