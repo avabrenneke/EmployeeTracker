@@ -27,3 +27,38 @@ const tableOptions = [
     "Role",
     "exit"
 ];
+//Run the Application
+startApp();
+
+//Application Function
+function startApp() {
+    inquirer
+        .prompt({
+            name: "action",
+            type: "list",
+            message: "Choose an option",
+            choices: tableOptions
+        })
+        .then(function (answer) {
+            switch (answer.action) {
+                case tableOptions[0]:
+                    chooseDepartment();
+                    break;
+
+                case tableOptions[1]:
+                    chooseRole();
+                    break;
+
+                case tableOptions[2]:
+                    chooseEmployee();
+                    break;
+
+                case tableOptions[3]:
+                    updateEmployee();
+
+                case tableOptions[4]:
+                    connection.end();
+                    break
+            }
+        })
+}
