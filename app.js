@@ -8,6 +8,9 @@ const tableOptions = [
     "Roles",
     "Employees",
     "Update Employee",
+    "Add Department",
+    "Add Employee",
+    "Add Role",
     "exit"
 ];
 //Employee List
@@ -25,7 +28,6 @@ const updateOptions = [
     "First Name",
     "Last Name",
     "Role",
-    "Update Employee",
     "exit"
 ];
 //Run the Application
@@ -56,8 +58,21 @@ function startApp() {
 
                 case tableOptions[3]:
                     updateEmployee();
+                    break;
 
-                case updateOptions[4]:
+                case tableOptions[4]:
+                    addDepartment();
+                    break;
+
+                case tableOptions[5]:
+                    addEmployee();
+                    break;
+                
+                case tableOptions[6]:
+                    addRole();
+                    break;
+
+                case updateOptions[7]:
                     connection.end();
                     break
             }
@@ -117,4 +132,67 @@ const updateEmployee = () => {
     }
     //Run the update
     runUpdate();  
+}
+
+function addDepartment() {
+
+
+    inquirer.prompt({
+      
+        type: "input",
+        message: "What is the name of the department?",
+        name: "deptName"
+
+    }).then(function(answer){
+
+
+
+        connection.query("INSERT INTO department (name) VALUES (?)", [answer.deptName] , function(err, res) {
+            if (err) throw err;
+            console.table(res)
+            startApp();
+    })
+    })
+}
+
+function addEmployee() {
+
+
+    inquirer.prompt({
+      
+        type: "input",
+        message: "Who is the employee?",
+        name: "employeeName"
+
+    }).then(function(answer){
+
+
+
+        connection.query("INSERT INTO employee (name) VALUES (?)", [answer.employeeName] , function(err, res) {
+            if (err) throw err;
+            console.table(res)
+            startApp();
+    })
+    })
+}
+
+function addRole() {
+
+
+    inquirer.prompt({
+      
+        type: "input",
+        message: "What is the role?",
+        name: "roleName"
+
+    }).then(function(answer){
+
+
+
+        connection.query("INSERT INTO role (name) VALUES (?)", [answer.roleName] , function(err, res) {
+            if (err) throw err;
+            console.table(res)
+            startApp();
+    })
+    })
 }
