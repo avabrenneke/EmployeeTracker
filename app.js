@@ -25,6 +25,7 @@ const updateOptions = [
     "First Name",
     "Last Name",
     "Role",
+    "Update Employee",
     "exit"
 ];
 //Run the Application
@@ -95,16 +96,24 @@ function chooseRole() {
         startApp();
     })
 }
-//Update Employee
+//Update Employee 
 const updateEmployee = () => {
     function runUpdate() {
         inquirer
-            .prompt({
+            .prompt([
+            {
                 name: "action",
                 type: "list",
                 message: "Choose employee to update",
                 choices: employeeOptions
-            })     
+            },
+            {
+                name: "change",
+                type: "list",
+                message: "Update Role",
+                choices: tableOptions
+            }
+        ])   
     }
     //Run the update
     runUpdate();  
