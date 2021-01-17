@@ -21,7 +21,7 @@ const employeeOptions = [
     "exit"
 ];
 //Table Options
-const updateEmployee = [
+const updateOptions = [
     "First Name",
     "Last Name",
     "Role",
@@ -56,7 +56,7 @@ function startApp() {
                 case tableOptions[3]:
                     updateEmployee();
 
-                case tableOptions[4]:
+                case updateOptions[4]:
                     connection.end();
                     break
             }
